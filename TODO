@@ -1,1 +1,19 @@
 https://ying-zhang.github.io/images/love-paper/research_and_paper_zhou_zhihua_2007_ppt.pdf
+
+
+https://zhuanlan.zhihu.com/p/615581394
+https://blog.csdn.net/weixin_43589323/article/details/132150014
+
+
+
+git 蓝字对比的是workspace和repo的head
+git reset <commitid> 同时修改head和当前分支指针，刷RI但不刷新workspace（默认 --mixed HEAD，soft刷R不刷IW，hard刷WIR）
+git checkout <commitid> 仅修改head，刷RI同时刷新workspace（文件改动全部不保留）
+git checkout <files> 从index刷到workspace，如果已经add过了则无效，想要重置该文件，需要指定版本commitid，例如  git checkout HEAD <files>
+git push 必须基于分支，不能基于commit，需要先切到目标分支，然后执行git merge <commitid> 将提交合并到目标分支，然后再push
+
+git revert 生成一个回退MR的MR，
+git merge 会同步刷新IW，通过手动修改并add、commit解决冲突，提交后显示合并详情（左别人的，中最终的，右自己的）
+
+fetch 到本地仓的远程分支（e.g. origin/main），不刷IW，需要git merge <远程分支提交的commitid，这个id应该可忽略>
+pull 到工作目录？yes，但是如果工作目录有改动就不会覆盖，也不会刷新index，只更新本地仓库R中的远程分支（e.g. origin/main），需要git merge；只有本地分支WIR统一时，pull才会同时刷WIR；如果本地工作目录的改动已经提交了，merge存在冲突可能
