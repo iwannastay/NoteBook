@@ -22,11 +22,11 @@ git config --global credential.helper manager-core
 ```shell
 
 
-git config --global http.sslverify false
-git config --global credential.helper store
-git config --global push.default matching
-git config --global http.postBuffer 2M
+git config --local http.sslverify false
+git config --local credential.helper store
+git config --local push.default matching
+git config --local http.postBuffer 2M
 
-git config --global http.proxy "http://xxxx"
-git config --global https.proxy "https://xxxx"
+git config --local http.proxy "http://xxxx"
+git config --local https.proxy "https://xxxx"
 ```
